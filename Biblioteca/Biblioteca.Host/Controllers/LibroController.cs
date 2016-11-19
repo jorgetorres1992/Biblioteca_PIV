@@ -4,7 +4,6 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-
 using Biblioteca.Data;
 using Biblioteca.Data.Modelos;
 using System.Web.Http.Description;
@@ -38,7 +37,7 @@ namespace Biblioteca.Host.Controllers
             return "value";
         }
 
-        [Route("api/Libro/{idLibro}/editorial/{idEditorial")]
+        [Route("api/Libro/{idLibro}/editorial/{idEditorial}")]
         [HttpPut]
         [ResponseType(typeof(Libro))]
         public IHttpActionResult AgregandoEditorial(int idLibro, int idEditorial)

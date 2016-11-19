@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,8 @@ namespace Biblioteca.Data
         public DbSet<Libro> Libros { get; set; } 
 
         public DbSet<Editorial> Editoriales { get; set; }
+
+        public DbSet<Autor> Autores { get; set; }
 
 
 

@@ -8,6 +8,10 @@ namespace Biblioteca.Data.Modelos
 {
     public class Libro
     {
+        public Libro()
+        {
+            this.Autores = new List<Autor>();
+        }
         public int Id { get; set; } // entity framawork por lo general ya la coloca id como llave primaria
         public string Nombre { get; set; }
 
@@ -15,5 +19,11 @@ namespace Biblioteca.Data.Modelos
 
         public Editorial Editorial { get; set; }
 
+        public IList<Autor> Autores { get; set; }
+
+        public void AgregarAutor(Autor nuevoAutor)
+        {
+            this.Autores.Add(nuevoAutor);
+        }
     }
 }
