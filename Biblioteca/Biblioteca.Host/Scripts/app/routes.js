@@ -7,6 +7,10 @@ app.config(['$routeProvider',
             templateUrl: "/Scripts/app/home/home.template.html",
             controller: "homeController" // este controlador se asocia a la vista de arriba
         })
+            .when('/editoriales', {
+                templateUrl: "/Scripts/app/editorial/editorial.template.html",
+                controller: "editorialController"
+            })
         .otherwise({ // si no encuentra la ruta adecuada que regrese al home
             reditecTo: '/'
         })
