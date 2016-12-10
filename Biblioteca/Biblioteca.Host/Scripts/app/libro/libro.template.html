@@ -1,0 +1,79 @@
+﻿<form name="libroForm" novalidate>
+    <div class="form-group">
+        <label for="libroId">Id:</label>
+        <input class="form-control"
+               id="libroId"
+               ng-model="librolActual.Id"
+               ng-disabled="true" />
+    </div>
+    <div class="form-group">
+        <label for="libroNombre">Nombre:</label>
+        <input class="form-control"
+               id="libroNombre"
+               name="libroNombre"
+               ng-model="libroActual.Nombre"
+               required
+               ng-minlength="3"
+               ng-maxlength="25" />
+        <div ng-messages="libroForm.libroNombre.$error">
+            <div ng-message="required">El nombre es requerido</div>
+            <div ng-message="minlength">El nombre del libro debe de tener mas 3 de caracteres</div>
+            <div ng-message="maxlength">El nombre del libro debe tener menos de 25 carateres</div>
+        </div>
+        <div class="form-group">
+            <label for="libroAno">Año:</label>
+            <input class="form-control"
+                   type="number"
+                   id="libroAno"
+                   name="libroAno"
+                   ng-model="libroActual.Ano"
+                   required
+                   ng-minlength="2"
+                   ng-maxlength="4" />
+            <div ng-messages="libroForm.libroAno.$error">
+                <div ng-message="required">El Año es requerido</div>
+                <div ng-message="minlength">Puede Abreviar el año con sus ultimos digitos</div>
+                <div ng-message="maxlength">El año solo tiene 4 digitos</div>
+            </div>
+            </div>
+        </div>
+    <div class="form-group">
+        <label>Editorial:</label>
+        <select name="libroEditorial"
+                class="form-control" ng-model="editorialSeleccionada"
+                ng-options="editorial.Nombre for editorial in editoriales"
+                required>
+            
+        </select>
+        </div>
+        <div ng-messages="libroForm.libroEditorial.$error">
+            <div ng-message="=required">La editorial del libro es requerido</div>
+    </div>
+    <div class="form-group">
+        <button ng-disabled="libroForm.$invalid" ng-click="salvarLibro()" class="btn btn-primary">{{accionActual}}</button>
+        <button ng-click="limpiar()" class="btn btn-default">Cancelar</button>
+    </div>
+</form>
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Año</th>
+        <th>Editorial</th>
+        <th></th>
+        <th></th>
+    </tr>
+    <tr ng-repeat="libro in libros">
+        <td>{{libro.Id}}</td>
+        <td>{{libro.Nombre}}</td>
+        <td>{{libro.Ano}}</td>
+        <td>
+        {{libro.Editorial.Nombre}}</td>
+        <td>
+            <button ng-click="editar(libro)" class="btn btn-link">Editar</button>
+        </td>
+        <td>
+            <button ng-click="eliminar(libro)" class="btn btn-link">Eliminar</button>
+        </td>
+    </tr>
+</table>

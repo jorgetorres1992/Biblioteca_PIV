@@ -24,7 +24,8 @@ namespace Biblioteca.Host.Controllers
         // GET: api/Libro
         public IEnumerable<Libro> Get()
         {
-            return bibliotecaContext.Libros;
+            return bibliotecaContext.Libros.Include("Editorial");
+       
         }
 
         // GET: api/Libro/5
@@ -56,8 +57,9 @@ namespace Biblioteca.Host.Controllers
             }
 
             libro.Editorial = editorial;
-            bibliotecaContext.Entry(libro).State = 
+            bibliotecaContext.Entry(libro).State =
                 EntityState.Modified;
+                bibliotecaContext.SaveChanges();
 
             return Ok(libro);
         }
